@@ -1,0 +1,19 @@
+<div class="space-y-4">
+    <div *ngFor="let joke of jokes"
+         class="group relative p-4 bg-gray-100 rounded-lg hover:bg-gray-200">
+      <p>{{ joke.content }}</p>
+      <button
+        class="absolute right-2 top-2 hidden group-hover:block bg-yellow-500 text-white px-2 py-1 rounded"
+        (click)="openEditModal(joke)"
+      >
+        Edit
+      </button>
+    </div>
+  
+    <app-joke-modal
+      *ngIf="selectedJoke"
+      [joke]="selectedJoke"
+      (save)="saveJoke($event)"
+      (close)="closeEditModal()"
+    ></app-joke-modal>
+  </div>
